@@ -1,7 +1,8 @@
-package br.com.none.moviemax
+package br.com.none.moviemax.presenter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.none.moviemax.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
