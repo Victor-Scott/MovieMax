@@ -1,6 +1,5 @@
 package br.com.none.moviemax.domain.model
 
-import kotlinx.serialization.SerialName
 
 data class Movie(
     val adult: Boolean,
@@ -11,7 +10,7 @@ data class Movie(
     val originalTitle: String,
     val overview: String,
     val popularity: Double,
-    val pasterPath: String,
+    val posterPath: String,
     val releaseDate: String,
     val title: String,
     val video: Boolean,

@@ -14,7 +14,7 @@ data class MovieRemote(
     @SerialName("original_title") val originalTitle: String,
     @SerialName("overview") val overview: String,
     @SerialName("popularity") val popularity: Double,
-    @SerialName("paster_path") val pasterPath: String,
+    @SerialName("poster_path") val posterPath: String,
     @SerialName("release_date") val releaseDate: String,
     @SerialName("title") val title: String,
     @SerialName("video") val video: Boolean,
@@ -31,7 +31,7 @@ fun MovieRemote.toDomain() = Movie(
     originalTitle = this.originalTitle,
     overview = this.overview,
     popularity = this.popularity,
-    pasterPath = this.pasterPath,
+    posterPath = this.posterPath,
     releaseDate = this.releaseDate,
     title = this.title,
     video = this.video,
@@ -42,7 +42,7 @@ fun MovieRemote.toDomain() = Movie(
 @Serializable
 data class BasePaginationRemote<out T>(
     @SerialName("page") val page: Int,
-    @SerialName("results") val results: List<T>,
+    @SerialName("results") val results: T,
     @SerialName("total_pages") val totalPages: Int,
     @SerialName("total_results") val totalResults: Int
 )
