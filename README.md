@@ -11,7 +11,8 @@ O projeto se trata de um aplicativo de review de filmes e séries.
 O app lista os filmes e séries em destaque nas plataformas de streaming. \
 Atualmente o aplicativo mantém somente essa funcionalidade, pois o projeto está em desenvolvimento.
 
-![CineMax - Funcionamento](https://github.com/Victor-Scott/MovieMax/assets/102738149/5eb48214-3120-4858-8268-6f60ba11c2b6)
+
+![CineMax - Funcionamento 1 ](https://github.com/Victor-Scott/MovieMax/assets/102738149/7cad7c07-20ec-4591-8164-ab938b069bd3)
 
 
 # ✔️ Técnicas e tecnologias utilizadas
