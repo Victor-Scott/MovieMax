@@ -4,7 +4,7 @@ import br.com.none.moviemax.domain.model.Movie
 
 data class MovieViewObject(
     val title: String,
-    val posterPath: String,
+    val posterPath: String?,
     val voteAverage: Double,
     val voteCount: Int
 

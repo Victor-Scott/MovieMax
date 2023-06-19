@@ -12,15 +12,11 @@ class DiscoveryRepositoryImpl @Inject constructor(
 
     override suspend fun getMovies(): List<Movie> {
         return try {
-            discoverService.getMovies(BuildConfig.tmdbToken).results.map {
-                it.toDomain()
-            }
+            discoverService.getMovies(BuildConfig.tmdbToken).results.map(MovieRemote::toDomain)
         } catch (e: Exception) {
             throw DiscoverRepositoryException()
         }
     }
 }
 
-class DiscoverRepositoryException : Exception() {
-
-}
+class DiscoverRepositoryException : Exception()

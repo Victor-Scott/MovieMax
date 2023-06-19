@@ -20,15 +20,15 @@ class MainViewModel @Inject constructor(
     val movies : LiveData<List<MovieViewObject>> = _movies
 
     fun getMovies() {
-        viewModelScope.launch(Dispatchers.IO) {
-            getMoviesUseCase().onSuccess {movies ->
-                _movies.postValue(movies.map { movie ->
-                    MovieViewObject(movie)
-                })
-            }.onFailure {
+        viewModelScope.launch {
+            getMoviesUseCase()
+                .onSuccess { movies ->
+                    val listMovie = movies.map { movie -> MovieViewObject(movie) }
+                    _movies.postValue(listMovie)
+                }
+                .onFailure {
 
-            }
+                }
         }
     }
-
 }

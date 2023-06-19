@@ -1,21 +1,27 @@
 package br.com.none.moviemax.network
 
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
+import br.com.none.moviemax.BuildConfig
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ServiceProvider {
 
-    private val contentType = "application/json".toMediaType()
-    private val json = Json {
-        ignoreUnknownKeys = true
+    private val client by lazy {
+        val loggingLevel = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+        val logging = HttpLoggingInterceptor()
+            .setLevel(loggingLevel)
+
+        OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
     }
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
-        .addConverterFactory(json.asConverterFactory(contentType))
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
         .build()
 
     fun <T> createService(apiClass: Class<T>): T = retrofit.create(apiClass)

@@ -4,16 +4,13 @@ import br.com.none.moviemax.data.DiscoverRepository
 import br.com.none.moviemax.domain.model.Movie
 import javax.inject.Inject
 
-class GetMoviesUseCase @Inject constructor(
+interface GetMoviesUseCase {
+    suspend operator fun invoke(): Result<List<Movie>>
+}
+
+class GetMoviesUseCaseImpl @Inject constructor(
     private val repository: DiscoverRepository
-) {
+) : GetMoviesUseCase {
 
-    suspend operator fun invoke(): Result<List<Movie>> {
-        return try {
-            Result.success(repository.getMovies())
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
+    override suspend fun invoke() = runCatching { repository.getMovies() }
 }
